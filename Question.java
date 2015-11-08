@@ -3,8 +3,8 @@ public class Question {
     private String question;
     private String[] answers;
     private int rightans;
-    private int attempts;
-    private int correct;
+    private int attempts=0;
+    private int correct=0;
     public Question() {
         
     }
@@ -33,12 +33,16 @@ public class Question {
     public void setAttempts(int tries) {
         this.attempts = tries;
     }
+    public void newAttempt(){
+        this.attempts++;
+    }
     public int getCorrect() {
         return correct;
     }
     public void setCorrect(int righto) {
         this.correct = righto;
     }
+    public 
     public boolean isRightAns(int guess) {
         
         return (rightans==guess);
