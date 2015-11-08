@@ -1,38 +1,42 @@
-import java.util.*
-import java.io.*
+import java.util.*;
+import java.io.*;
 
 public class assign4 {
     
-    public static Question j(){
-        
-    }
-    
-    
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-        //*
-        System.out.println("From what file would you like to read questions?");
-        String f = sc.next();
-        //*/
-        /*
-        File f = new File("trivia.txt");
-        //*/
-        Scanner in = new Scanner(f);
-        ArrayList<Question> quiz = new ArrayList;
+        //try {
+            /*
+            System.out.println("From what file would you like to read questions?");
+            String f = sc.next();
+            //*/
+            //*
+            File f = new File("trivia.txt");
+            //*/
+            Scanner in = new Scanner(f);
+        ArrayList<Question> quiz = new ArrayList<Question>();
         while (in.hasNext()) {
             Question quest = new Question();
-            quest.setQuestion(in.next());
+            quest.setQuestion(in.nextLine());
             int numans = in.nextInt();
+            String throwaway = in.nextLine();
             String[] ans=new String[numans];
             for (int i = 0;i<numans;i++){
-                ans[i] = in.next();
+                ans[i] = in.nextLine();
             }
             quest.setAnswers(ans);
             quest.setRightAns(in.nextInt());
+            throwaway = in.nextLine();
             quest.setAttempts(in.nextInt());
+            throwaway = in.nextLine();
             quest.setCorrect(in.nextInt());
+            
             quiz.add(quest);
         }
+        /* } catch (Exception e) {
+            System.out.println("Sorry; couldn't find that file");
+            System.exit(0);
+        } */
         //Here begins the quiz
         int[] ourGuesses = new int[quiz.size()];
         for (int i = 0;i<quiz.size();i++) {
@@ -55,8 +59,8 @@ public class assign4 {
         for (int i = 0;i<quiz.size();i++) {
             Question quest = quiz.get(i);
             System.out.println("Question: " + quest.getQuestion());
-            int[] ans = quest.getAnswers();
-            int rightAns = quiz.getRightAns();
+            String[] ans = quest.getAnswers();
+            int rightAns = quest.getRightAns();
             int guess = ourGuesses[i];
             System.out.println("Answer: " + ans[rightAns]);
             System.out.println("Guess: " + ans[guess]);

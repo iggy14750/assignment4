@@ -39,10 +39,12 @@ public class Question {
     public int getCorrect() {
         return correct;
     }
+    public void newCorrect() {
+        this.correct++;
+    }
     public void setCorrect(int righto) {
         this.correct = righto;
     }
-    public 
     public boolean isRightAns(int guess) {
         
         return (rightans==guess);
