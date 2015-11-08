@@ -1,6 +1,7 @@
 public class Question {
 
     private String question;
+    private int numans;
     private String[] answers;
     private int rightans;
     private int attempts=0;
@@ -14,7 +15,12 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
-    
+    public int getNumAns() {
+        return numans;
+    }
+    public void setNumAns(int answers) {
+        this.numans = answers;
+    }
     public String[] getAnswers() {
         return answers;
     }
@@ -46,9 +52,7 @@ public class Question {
         this.correct = righto;
     }
     public boolean isRightAns(int guess) {
-        
         return (rightans==guess);
-        
     }
     
     
