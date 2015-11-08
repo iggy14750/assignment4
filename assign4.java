@@ -74,7 +74,13 @@ public class assign4 {
                 response = "Incorrect! Senpai didn't notice you!";
             }
             System.out.println("\tResults: " + response);
-            //I should also print out the stats
+            /*  corr = quest.getCorrect();
+            int att = quest.getAttempts();
+            System.out.println(corr + " " + att);
+            double frac = corr/att;
+            System.out.println(frac); */
+            double percent = (((double) quest.getCorrect())/quest.getAttempts())*100;
+            System.out.printf("\tStats: %d/%d; %.2f%%\n", quest.getCorrect(), quest.getAttempts(), percent);
         }
         
         //saving to disk
