@@ -11,11 +11,12 @@ public class assign4 {
         try {
             /*
             System.out.println("From what file would you like to read questions?");
-            String f = sc.next();
+            String filename = sc.next();
             //*/
             //*
-            File f = new File("trivia.txt");
+            String filename = "trivia.txt";
             //*/
+            File f = new File(filename);
             Scanner in = new Scanner(f);
             while (in.hasNext()) {
                 Question quest = new Question();
@@ -77,9 +78,9 @@ public class assign4 {
         }
         
         //saving to disk
+        PrintWriter pw = new PrintWriter(filename);
         for (int i = 0; i<quiz.size();i++) {
             Question question = quiz.get(i);
-            PrintWriter pw = new PrintWriter(f);
             pw.println(question.getQuestion());
             int numans = question.getNumAns();
             pw.println(numans);
@@ -91,6 +92,7 @@ public class assign4 {
             pw.println(question.getAttempts());
             pw.println(question.getCorrect());
         }
+        pw.close();
     }
     
 }
