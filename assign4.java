@@ -7,39 +7,28 @@ public class assign4 {
         Scanner sc = new Scanner(System.in);
         ArrayList<Question> quiz = new ArrayList<Question>();
         
-        /*
-        try {
-            /*
-            System.out.println("From what file would you like to read questions?");
-            String filename = sc.next();
-            //*/
-            //*
-            String filename = "trivia.txt";
-            //*/
-            File f = new File(filename);
-            Scanner in = new Scanner(f);
-            while (in.hasNext()) {
-                Question quest = new Question();
-                quest.setQuestion(in.nextLine());
-                int numans = Integer.parseInt(in.nextLine());
-                quest.setNumAns(numans);
-                String[] ans=new String[numans];
-                for (int i = 0;i<numans;i++){
-                    ans[i] = in.nextLine();
-                }
-                quest.setAnswers(ans);
-                quest.setRightAns(Integer.parseInt(in.nextLine()));
-                quest.setAttempts(Integer.parseInt(in.nextLine()));
-                quest.setCorrect(Integer.parseInt(in.nextLine()));
-                
-                quiz.add(quest);
+        //Reading in from disk
+        System.out.println("From what file would you like to read questions?");
+        String filename = sc.next();
+        File f = new File(filename);
+        Scanner in = new Scanner(f);
+        while (in.hasNext()) {
+            Question quest = new Question();
+            quest.setQuestion(in.nextLine());
+            int numans = Integer.parseInt(in.nextLine());
+            quest.setNumAns(numans);
+            String[] ans=new String[numans];
+            for (int i = 0;i<numans;i++){
+                ans[i] = in.nextLine();
             }
-        /*
-        } catch (Exception e) {
-            System.out.println("Sorry; couldn't find that file");
-            System.exit(0);
+            quest.setAnswers(ans);
+            quest.setRightAns(Integer.parseInt(in.nextLine()));
+            quest.setAttempts(Integer.parseInt(in.nextLine()));
+            quest.setCorrect(Integer.parseInt(in.nextLine()));
+            quiz.add(quest);
         }
-        //*/
+        in.close();
+        
         //Here begins the quiz
         int[] ourGuesses = new int[quiz.size()];
         for (int i = 0;i<quiz.size();i++) {
@@ -74,11 +63,6 @@ public class assign4 {
                 response = "Incorrect! Senpai didn't notice you!";
             }
             System.out.println("\tResults: " + response);
-            /*  corr = quest.getCorrect();
-            int att = quest.getAttempts();
-            System.out.println(corr + " " + att);
-            double frac = corr/att;
-            System.out.println(frac); */
             double percent = (((double) quest.getCorrect())/quest.getAttempts())*100;
             System.out.printf("\tStats: %d/%d; %.2f%%\n", quest.getCorrect(), quest.getAttempts(), percent);
         }
