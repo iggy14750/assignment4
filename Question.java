@@ -54,6 +54,8 @@ public class Question {
     public boolean isRightAns(int guess) {
         return (rightans==guess);
     }
-    
+    public double getPercent() {
+        return ((double) this.correct)/this.attempts;
+    }
     
 }
