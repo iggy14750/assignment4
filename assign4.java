@@ -9,7 +9,10 @@ public class assign4 {
         
         //Reading in from disk
         System.out.println("From what file would you like to read questions?");
-        String filename = "trivia.txt";//sc.next();
+        String filename = sc.next();
+        if (filename.equals("")){
+            filename = "trivia.txt";
+        }
         File f = new File(filename);
         Scanner in = new Scanner(f);
         while (in.hasNext()) {
